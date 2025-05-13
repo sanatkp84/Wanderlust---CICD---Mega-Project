@@ -1,6 +1,6 @@
 resource "aws_key_pair" "deployer" {
   key_name   = "terra-automate-key"
-  public_key = file("/Users/shubham/Documents/work/TrainWithShubham/terra-practice/terra-key.pub")
+  public_key = file("/Users/sanatkumarpanda/Wanderlust---CICD---Mega-Project/terraform/terra-keyy.pub")
 }
 
 resource "aws_default_vpc" "default" {
@@ -48,13 +48,13 @@ resource "aws_security_group" "allow_user_to_connect" {
   }
 }
 
-resource "aws_instance" "testinstance" {
+resource "aws_instance" "sanatinstance" {
   ami             = var.ami_id
   instance_type   = var.instance_type
   key_name        = aws_key_pair.deployer.key_name
   security_groups = [aws_security_group.allow_user_to_connect.name]
   tags = {
-    Name = "Automate"
+    Name = "wanderlust-master"
   }
   root_block_device {
     volume_size = 30 
